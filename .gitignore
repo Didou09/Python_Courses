@@ -1,6 +1,7 @@
 # For this project #
 ####################
 .ipynb*
+*.slides.html
 
 # Compiled source #
 ###################
