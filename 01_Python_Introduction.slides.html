@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -12169,7 +12198,9 @@ The <em>input prompt</em> is green and has a number.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12209,7 +12240,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[3]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12238,7 +12271,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[4]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12279,7 +12314,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>The slowest run took 76.37 times longer than the fastest. This could mean that an intermediate result is being cached.
 10000000 loops, best of 3: 24.2 ns per loop
@@ -12308,7 +12345,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Directory history (kept in _dh)
 0: /home/admlocal/Bureau/FormationPython/python
@@ -12337,7 +12376,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>IPython will make a temporary file named: /tmp/ipython_edit_8n5wreed/ipython_edit_y2p1irq5.py
 </pre>
@@ -12365,7 +12406,9 @@ Numbers are used to get back the corresponding input / output, with the <em>_</e
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12411,7 +12454,9 @@ Automagic is ON, % prefix IS NOT needed for line magics.</pre>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>01_Python_Introduction.ipynb	    img
 01_Python_Introduction.slides.html  JHillairet_Python_Course_For_Fusion
@@ -12444,7 +12489,9 @@ Fit.ipynb			    SymPy.ipynb
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>/home/admlocal/Bureau/FormationPython/python
 </pre>
@@ -12497,8 +12544,7 @@ Fit.ipynb			    SymPy.ipynb
 <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This is my documentation &quot;&quot;&quot;</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">X</span>
+    <span class="k">return</span> <span class="mf">2.</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 
 </div>
@@ -12525,7 +12571,7 @@ f<span class="o">?</span>
 f<span class="o">??</span>
 
 <span class="c1"># The print(&lt;&gt;.__doc__) command</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">__doc__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 
 <span class="c1"># The help() function</span>
 <span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -12546,7 +12592,9 @@ f<span class="o">??</span>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>None
 Help on int object:
@@ -12800,7 +12848,9 @@ Help on function &lt;lambda&gt; in module __main__:
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[52]:</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[52]:</div>
+
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12921,7 +12971,9 @@ Help on function &lt;lambda&gt; in module __main__:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>0
 string
@@ -12952,7 +13004,9 @@ string
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>(0, &#39;string&#39;, &lt;function &lt;lambda&gt; at 0x7fd20d03b950&gt;)
 </pre>
@@ -12981,7 +13035,9 @@ string
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>0 string &lt;function &lt;lambda&gt; at 0x7fd20d03b950&gt;
 </pre>
@@ -13009,7 +13065,7 @@ string
 <tr>
 <td>Addition</td>
 <td>a + b</td>
-<td>Can also concatenation in case of string    </td>
+<td>Can also concatenation in case of string </td>
 </tr>
 <tr>
 <td>Subtraction</td>
@@ -13069,7 +13125,7 @@ string
 </tr>
 <tr>
 <td>Bitwise Inversion</td>
-<td>~ a    or invert(a)</td>
+<td>~ a or invert(a)</td>
 </tr>
 <tr>
 <td>Negation (Arithmetic)</td>
@@ -13195,7 +13251,7 @@ The equality operator (<code>==</code>) tests if two values are equivalent. The 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># int</span>
@@ -13213,15 +13269,15 @@ The equality operator (<code>==</code>) tests if two values are equivalent. The 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Integer division</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ai//int(af)&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ai</span><span class="o">//</span><span class="nb">int</span><span class="p">(</span><span class="n">af</span><span class="p">)),</span> <span class="n">ai</span><span class="o">//</span><span class="nb">int</span><span class="p">(</span><span class="n">af</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ai</span><span class="o">//</span><span class="nb">int</span><span class="p">(</span><span class="n">af</span><span class="p">))</span>
 <span class="c1"># Automatic conversion</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ai/af      &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ai</span><span class="o">/</span><span class="n">af</span><span class="p">),</span> <span class="n">ai</span><span class="o">/</span><span class="n">af</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ai + af    &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ai</span><span class="o">+</span><span class="n">af</span><span class="p">),</span> <span class="n">ai</span><span class="o">+</span><span class="n">af</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ac + af    &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ac</span><span class="o">+</span><span class="n">af</span><span class="p">),</span> <span class="n">ac</span><span class="o">+</span><span class="n">af</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ai</span><span class="o">/</span><span class="n">af</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ai</span><span class="o">+</span><span class="n">af</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ac</span><span class="o">+</span><span class="n">af</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13232,12 +13288,14 @@ The equality operator (<code>==</code>) tests if two values are equivalent. The 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>ai//int(af) &lt;class &#39;int&#39;&gt; 2
-ai/af       &lt;class &#39;float&#39;&gt; 2.5
-ai + af     &lt;class &#39;float&#39;&gt; 14.0
-ac + af     &lt;class &#39;complex&#39;&gt; (5+2j)
+<pre>2
+2.5
+14.0
+(5+2j)
 </pre>
 </div>
 </div>
@@ -13300,7 +13358,9 @@ The two format exist so you can embbed one in another</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Python doesn&#39;t mix up the three types
 Python doesn&#39;t mix up the three typesPython doesn&#34;t mix up the two types
@@ -13334,7 +13394,9 @@ Python doesn&#39;t mix up the three typesPython doesn&#34;t mix up the two types
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>This is a string
 But it allows for more formatting
@@ -13384,7 +13446,9 @@ They come in with a lot of built-in methods to facilitate manipulation</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>PYTHON_IRFM_01
 [&#39;Python&#39;, &#39;Irfm&#39;, &#39;01&#39;]
@@ -13431,7 +13495,9 @@ They come in with a lot of built-in methods to facilitate manipulation</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>6
 Python Irfm 01
@@ -13475,7 +13541,9 @@ Python Irfm 01
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>I want toys and a job for christmas !
 </pre>
@@ -13505,7 +13573,9 @@ Python Irfm 01
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>I have 256898 friends on Facebook, but 03 came to my birthday, they are my favorite 3 friends
 </pre>
@@ -13556,7 +13626,9 @@ Python Irfm 01
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>True
 p y a
@@ -13598,7 +13670,9 @@ p y a
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>abc
 </pre>
@@ -13625,7 +13699,9 @@ p y a
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>defgh
 </pre>
@@ -13652,7 +13728,9 @@ p y a
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>cd
 </pre>
@@ -13679,7 +13757,9 @@ p y a
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>aceg
 </pre>
@@ -13745,7 +13825,9 @@ The long-story from the Python creator: [Why Python uses 0-based indexing](http:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>hgfedcba
 </pre>
@@ -13774,7 +13856,9 @@ The long-story from the Python creator: [Why Python uses 0-based indexing](http:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>abcdefghabcdefgh
 abcdefghabcdefghabcdefgh
@@ -13856,7 +13940,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[0, &#39;a&#39;, [&#39;4&#39;, None], (3, &#39;r&#39;)]
 </pre>
@@ -13886,7 +13972,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[5, &#39;a&#39;, [&#39;1&#39;], (3, &#39;r&#39;)]
 </pre>
@@ -13920,7 +14008,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[3, &#39;4&#39;, [], &#39;new&#39;]
 [3, &#39;4&#39;, [], &#39;new&#39;, &#39;n&#39;, &#39;e&#39;, &#39;w&#39;, &#39;2&#39;]
@@ -13962,7 +14052,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[&#39;she loves me not at all&#39;, &#39;she loves me a bit&#39;, &#39;she loves me a lot&#39;]
 </pre>
@@ -14017,7 +14109,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[&#39;01 shot&#39;, &#39;02 shot&#39;, &#39;03 shot&#39;, &#39;05 shot&#39;]
 [&#39;01 shot&#39;, &#39;02 shot&#39;, &#39;03 shot&#39;, &#39;04 shot&#39;, &#39;05 shot&#39;]
@@ -14065,7 +14159,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;a&#39;: 0, &#39;b&#39;: &#39;1&#39;, &#39;c&#39;: [2, &#39;3&#39;]}
 {&#39;a&#39;: 0, &#39;b&#39;: &#39;1&#39;, &#39;c&#39;: [2, &#39;3&#39;]}
@@ -14098,7 +14194,9 @@ abcdefghabcdefghabcdefgh
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;a&#39;: 0, &#39;b&#39;: &#39;1&#39;, &#39;c&#39;: [2, &#39;3&#39;], 4: &#39;j&#39;, &#39;4&#39;: &#39;h&#39;, (1, &#39;a&#39;): 5}
 0
@@ -14139,7 +14237,9 @@ j h
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;A&#39;: 0, 2: 5, &#39;3&#39;: []}
 </pre>
@@ -14168,7 +14268,9 @@ j h
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;A&#39;: 0, 2: 5, &#39;3&#39;: [], &#39;G&#39;: 7}
 </pre>
@@ -14197,7 +14299,9 @@ j h
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;A&#39;: 10, 2: 5, &#39;3&#39;: [], &#39;G&#39;: 7}
 </pre>
@@ -14226,7 +14330,9 @@ j h
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>{&#39;A&#39;: 10, &#39;3&#39;: [], &#39;G&#39;: 7}
 </pre>
@@ -14255,7 +14361,9 @@ j h
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>dict_keys([&#39;A&#39;, &#39;3&#39;, &#39;G&#39;])
 dict_values([10, [], 7])
@@ -14300,7 +14408,9 @@ dict_values([10, [], 7])
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>dict_keys([52600, 52601])
 {52600: {&#39;Ip&#39;: 700, &#39;Bt&#39;: 2.5}, 52601: {&#39;Ip&#39;: 700, &#39;Bt&#39;: 2.4}, 52602: {&#39;Ip&#39;: 700, &#39;Bt&#39;: 2.6}}
@@ -14350,7 +14460,9 @@ dict_values([10, [], 7])
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>[0]
 [0, 1]
@@ -14404,7 +14516,9 @@ dict_values([10, [], 7])
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>2
 </pre>
@@ -14448,7 +14562,9 @@ dict_values([10, [], 7])
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Sorry, divide by 0 =&gt; return 0 by default
 0
@@ -14557,7 +14673,9 @@ dict_values([10, [], 7])
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>0.283662185463
 </pre>
@@ -14608,7 +14726,7 @@ dict_values([10, [], 7])
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#%%writefile myfunc.py</span>
 <span class="c1"># Create a DOCUMENTED function with an explicit name and variables</span>
-<span class="k">def</span> <span class="nf">Ingredients4Pancakes</span><span class="p">(</span><span class="n">pan</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="nb">dict</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">Ingredients4Pancakes</span><span class="p">(</span><span class="n">pan</span><span class="p">):</span>
     <span class="c1"># The &quot;&quot;&quot;  &quot;&quot;&quot; syntax encloses the function documentation</span>
     <span class="c1"># It is automatically returnes by the ? syntax in the console</span>
     <span class="sd">&quot;&quot;&quot; Return the ingredients to make pan pancakes </span>
@@ -14623,25 +14741,12 @@ dict_values([10, [], 7])
 <span class="sd">        </span>
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
-<span class="sd">    out :   dict / tuple</span>
-<span class="sd">        The output, formatted as required </span>
+<span class="sd">    eggs : int</span>
+<span class="sd">        The number of eggs required</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Use explicit variable names whenver possible</span>
-    <span class="n">eggs</span><span class="p">,</span> <span class="n">eg_u</span> <span class="o">=</span> <span class="n">pan</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span>
-    <span class="n">milk</span><span class="p">,</span> <span class="n">mlk_u</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">pan</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span>
-    <span class="n">toads</span><span class="p">,</span> <span class="n">td_u</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">pan</span><span class="p">,</span> <span class="s1">&#39;kg&#39;</span>
-    
-    <span class="c1"># ------ optional </span>
-    <span class="c1"># A good practice, if your function returns several arguments</span>
-    <span class="c1"># That may not be clear and it needs to be used by others</span>
-    <span class="c1"># Is to return a dict with explicit keys</span>
-    <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;eggs&#39;</span><span class="p">:{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span><span class="n">eggs</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">eg_u</span><span class="p">},</span>
-               <span class="s1">&#39;milk&#39;</span><span class="p">:{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span><span class="n">milk</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">mlk_u</span><span class="p">},</span>
-               <span class="s1">&#39;toads&#39;</span><span class="p">:{</span><span class="s1">&#39;val&#39;</span><span class="p">:</span><span class="n">toads</span><span class="p">,</span><span class="s1">&#39;units&#39;</span><span class="p">:</span><span class="n">td_u</span><span class="p">}}</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">eggs</span><span class="p">,</span> <span class="n">eg_u</span><span class="p">,</span> <span class="n">milk</span><span class="p">,</span> <span class="n">mlk_u</span><span class="p">,</span> <span class="n">toads</span><span class="p">,</span> <span class="n">td_u</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">out</span>
+    <span class="c1"># Use explicit variable names whenever possible</span>
+    <span class="n">eggs</span> <span class="o">=</span> <span class="n">pan</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">eggs</span>
 
 <span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fast-and-dirty coding&quot;</span><span class="p">)</span>
@@ -14688,7 +14793,9 @@ mf.f2<span class="o">?</span>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Fast-and-dirty coding
 </pre>
@@ -14803,7 +14910,9 @@ mf.f2<span class="o">?</span>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
+<div class="output_area">
+<div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>False
 True
